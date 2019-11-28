@@ -9,7 +9,7 @@ import skimage.morphology as morph
 from scipy import ndimage as ndi
 from skimage import feature
 from skimage import filters
-from skimage import img_as_float, img_as_float32
+from skimage import img_as_float, img_as_float32, img_as_ubyte
 
 
 def wiener2(img, neighborship=3, noise_variance=None):
@@ -54,7 +54,7 @@ def microbench(input_file, output_folder):
     times.append(datetime.now())
 
     # Canny benchmark
-    img_edges = feature.canny(img, 1, 0.01, 0.02)
+    img_edges = img_as_float32(feature.canny(img_as_ubyte(img), 1, 0.1 * 255, 0.2 * 255))
     times.append(datetime.now())
 
     # Wiener2 benchmark
