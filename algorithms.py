@@ -54,7 +54,7 @@ def microbench(input_file, output_folder):
     times.append(datetime.now())
 
     # Canny benchmark
-    img_edges = feature.canny(img, 1, 0.1, 0.2)
+    img_edges = feature.canny(img, 1, 0.01, 0.02)
     times.append(datetime.now())
 
     # Wiener2 benchmark
