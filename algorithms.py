@@ -77,5 +77,5 @@ def microbench(input_file, output_folder):
     for i in range(1, len(time_points)):
         runtimes[time_points[i]] += (times[i] - times[i - 1]).total_seconds()
 
-    df = pd.DataFrame({ "Runtime (s)": [ runtimes[x] for x in set(time_points[1:]) ] }, index=time_points[1:])
+    df = pd.DataFrame({ "Runtime (s)": [ runtimes[x] for x in runtimes.keys() ] }, index=runtimes.keys())
     df.to_csv(output_folder + "/runtime.csv")
